@@ -19,7 +19,6 @@ namespace MyBootstrapSchool.Controllers
             return View();
         }
 
-        [ValidateAntiForgeryToken]//防止CSRF攻击
         [HttpPost]
         public ActionResult Register(string username = "", string password = "")
         {
