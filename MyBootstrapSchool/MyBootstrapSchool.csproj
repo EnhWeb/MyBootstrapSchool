@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\normalize.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -150,6 +151,10 @@
     <Content Include="Areas\Manage\Views\Default\Index.cshtml" />
     <Content Include="Areas\UserCenter\Views\web.config" />
     <None Include="Properties\PublishProfiles\发布到文件.pubxml" />
+    <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\ace.rar" />
+    <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\Bootstrap ACE后台管理界面模板%28扁平化%29-后台模板-代码家园.URL" />
+    <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\Bootstrap ACE后台管理界面模板%28扁平化%29_DEMO演示页_代码家园.URL" />
+    <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\js导航,导航菜单,js导航菜单,导航栏代码,js菜单_第1页-网页代码-代码家园.URL" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.offcanvas.js" />
     <Content Include="Scripts\bootstrap.ie10-viewport-bug-workaround.js" />
