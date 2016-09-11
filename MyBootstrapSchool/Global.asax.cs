@@ -17,5 +17,8 @@ namespace MyBootstrapSchool
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        static void Main()
+        {}
     }
 }
