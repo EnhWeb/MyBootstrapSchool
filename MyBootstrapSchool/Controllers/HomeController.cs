@@ -11,7 +11,7 @@ namespace MyBootstrapSchool.Controllers
         public ActionResult Index(string username = "", string password = "")
         {
             //Request.IsAjaxRequest();
-            Response.Write("Request.IsAjaxRequest()：" + Request.IsAjaxRequest().ToString()); 
+            //Response.Write("Request.IsAjaxRequest()：" + Request.IsAjaxRequest().ToString()); 
             if (username != "" && password != "" && Request.HttpMethod == "POST")
             {
                 Response.Write(string.Format(" | 用户名：{0} 密码：{1}", username, password));
