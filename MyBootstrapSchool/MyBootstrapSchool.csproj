@@ -165,6 +165,7 @@
     <Content Include="Manage.Resource\ace\assets\css\jquery.gritter.css" />
     <Content Include="Manage.Resource\ace\assets\css\select2.css" />
     <Content Include="Manage.Resource\ace\assets\css\ui.jqgrid.css" />
+    <Content Include="Manage.Resource\ace\assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Manage.Resource\ace\assets\images\gallery\image-1.jpg" />
     <Content Include="Manage.Resource\ace\assets\images\gallery\image-2.jpg" />
     <Content Include="Manage.Resource\ace\assets\images\gallery\image-3.jpg" />
@@ -276,6 +277,9 @@
     <Content Include="Manage.Resource\ace\assets\avatars\Thumbs.db" />
     <Content Include="Manage.Resource\ace\assets\css\images\Thumbs.db" />
     <Content Include="Manage.Resource\ace\assets\font\fontawesome-webfont.woff" />
+    <Content Include="Manage.Resource\ace\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Manage.Resource\ace\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Manage.Resource\ace\assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\发布到文件.pubxml" />
     <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\ace.rar" />
     <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\Bootstrap ACE后台管理界面模板%28扁平化%29-后台模板-代码家园.URL" />
