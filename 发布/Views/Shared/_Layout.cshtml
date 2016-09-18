@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })<span class="badge" style="margin-top:12px">42</span>
+            </div>
+            <div class="navbar-collapse collapse" style="max-height:none;">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                    <li>@Html.ActionLink("关于", "About", "Home")</li>
+                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+
+                </ul>
+
+
+                @Html.Partial("_LoginPartial")
+
+
+                <div class="visible-xs visible-md visible-lg navbar-right navbar-form ">
+                    <form role="search">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon glyphicon glyphicon-search" style="top:0px;width:auto;" id="basic-addon1"></span>
+                            <input type="text" placeholder="搜索" class="form-control">
+                            <span class="input-group-btn" style="width:auto;">
+                                <button class="btn btn-success" type="submit">搜索</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container body-content">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-sm-9 col-xs-12">
+                <p class="pull-right visible-xs">
+                    <button data-toggle="offcanvas" class="btn btn-primary btn-xs" type="button">显示导航</button>
+                </p>
+                @RenderBody()
+            </div>
+            <div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas" style="padding-top:20px;">
+                <div class="list-group">
+                    <a class="list-group-item active" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                    <a class="list-group-item" href="#">Link</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <footer class="footer text-center" style="padding-top:20px;">
+        <p class="text-muted">&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
+    </footer>
+
+
+
+
+    <style>
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+        .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+
+
+ /*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+        body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+    </style>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    
+    @*已经从BundleConfig中引入*@
+    @*<script src="http://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>*@
+    @*<script src="~/Scripts/bootstrap.ie10-viewport-bug-workaround.js"></script>*@
+
+    @*已经从BundleConfig中引入*@
+    @*<script src="http://v3.bootcss.com/examples/offcanvas/offcanvas.js"></script>*@
+    @*<script src="~/Scripts/bootstrap.offcanvas.js"></script>*@
+    
+</body>
+</html>

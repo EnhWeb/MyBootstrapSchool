@@ -1,0 +1,48 @@
+﻿
+@if (Request.IsAuthenticated)
+{    
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("你好，" + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*<li class="dropdown open"><!-- class .open类为默认展开菜单 -->*@
+        <li class="dropdown">
+            <a aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">登录 <span class="caret"></span></a>
+            @*@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+            <ul class="dropdown-menu" style="min-width:270px;">
+                <li style="padding-top:10px;color:#999999;padding-left:30px;">用户登录</li>
+                @*<li class="divider" role="separator"></li>*@
+                <li>
+                    <div class="container">
+                        <form class="navbar-form" method="post">
+                            <div class="form-control-static"><input name="username" type="text" class="form-control" placeholder="用户名"></div>
+                            <div class="form-control-static"><input name="password" type="password" class="form-control" placeholder="密码"></div>
+                            <div id="checkCode" class="form-control-static" style="display:none;"><input name="vcode" type="text" class="form-control" placeholder="验证码"><img src="https://account.youku.com/passport/captcha.htm?bizType=login&buid=youku&pid=8fb8456183734a86bfc1c15a1c761cdf&time=1472493442493" /></div>
+                            <div class="checkbox" style="color:#999999;"><label><input type="checkbox" value="remember-me"> 记住我</label></div>
+                            <div class="form-control-static">
+
+                                <button class="btn btn-success" type="submit">登录</button>
+                                @*<button class="btn btn-success" type="button">注册</button>*@
+                                <div style="margin-left:30px;display:inline;">@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+}
