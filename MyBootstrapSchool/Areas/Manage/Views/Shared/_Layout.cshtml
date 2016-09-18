@@ -1,8 +1,35 @@
-﻿<!DOCTYPE html>
+﻿@{
+    if (Request.Cookies.Get("ace.settings") == null)
+    {
+        //Response.Write("ace.settings 为空");
+
+        HttpCookie cookie = new HttpCookie("ace.settings", "{\"navbar-fixed\":1,\"sidebar-fixed\":1,\"breadcrumbs-fixed\":1,\"main-container-fixed\":-1}") { Expires = DateTime.Now.AddDays(300) };
+        Response.Cookies.Add(cookie);
+    }
+
+    //默认皮肤设置  skin-1    skin-2    skin-3
+    string SkinId = string.Format(" class=\"{0}\"", "skin-2");
+    if (Request.Cookies.Get("ace.SkinId") == null)
+    {
+        //Response.Write("ace.settings 为空");
+
+        HttpCookie cookie = new HttpCookie("ace.SkinId", string.Format(" class=\"{0}\"", "skin-1")) { Expires = DateTime.Now.AddDays(300) };
+        Response.Cookies.Add(cookie);
+
+        SkinId = cookie.Value;
+    }
+    else
+    {
+        SkinId = Request.Cookies.Get("ace.SkinId").Value;
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <title>控制台 - 位置：@ViewBag.Title</title>
     <meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
     <meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载" />
@@ -17,7 +44,7 @@
     <!-- page specific plugin styles -->
     <!-- fonts -->
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+    <link rel="stylesheet" href="/Resource.Manage/ace/assets/css/googleapis-fonts.css?family=Open+Sans:400,300" />
 
     <!-- ace styles -->
 
@@ -38,9 +65,43 @@
     <script src="/Resource.Manage/ace/assets/js/html5shiv.js"></script>
     <script src="/Resource.Manage/ace/assets/js/respond.min.js"></script>
     <![endif]-->
+
+
+
+
+
+
+
+
+    
+    <!--[if !IE]> -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/Resource.Manage/ace/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='/Resource.Manage/ace/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        if ("ontouchend" in document) document.write("<script src='/Resource.Manage/ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+    </script>
 </head>
 
-<body>
+<body @Html.Raw(SkinId)>
+    <div id="skin-name" @Html.Raw(SkinId) style="display:none;"></div>
     <div class="navbar navbar-default" id="navbar">
         <script type="text/javascript">
 				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -48,10 +109,10 @@
 
         <div class="navbar-container" id="navbar-container">
             <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
+                <a href="@Url.Action("Index","Default")" class="navbar-brand">
                     <small>
-                        <i class="icon-leaf"></i>
-                        ACE后台管理系统
+                        <i class=" icon-desktop"></i><i class="fa fa-eye" aria-hidden="true"></i>
+                        WebEnh 管理系统
                     </small>
                 </a><!-- /.brand -->
             </div><!-- /.navbar-header -->
@@ -314,10 +375,7 @@
         </script>
 
         <div class="main-container-inner">
-            <a class="menu-toggler" id="menu-toggler" href="#">
-                <span class="menu-text"></span>
-            </a>
-
+            <a class="menu-toggler" id="menu-toggler" href="javascript:void()"><span class="menu-text"></span></a>
             <div class="sidebar" id="sidebar">
                 <script type="text/javascript">
 						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -325,44 +383,67 @@
 
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                        <button class="btn btn-success">
-                            <i class="icon-signal"></i>
-                        </button>
-
-                        <button class="btn btn-info">
-                            <i class="icon-pencil"></i>
-                        </button>
-
-                        <button class="btn btn-warning">
-                            <i class="icon-group"></i>
-                        </button>
-
-                        <button class="btn btn-danger">
-                            <i class="icon-cogs"></i>
-                        </button>
+                        <button class="btn btn-success"><i class="icon-signal"></i></button>
+                        <button class="btn btn-info"><i class="icon-pencil"></i></button>
+                        <button class="btn btn-warning"><i class="icon-group"></i></button>
+                        <button class="btn btn-danger"><i class="icon-cogs"></i></button>
                     </div>
+                    <script>
+                        $("button.btn-danger").click(function(){
+                            window.location = "@Url.Action("Index","Config")";
+                        });
+                    </script>
 
                     <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
                         <span class="btn btn-success"></span>
-
                         <span class="btn btn-info"></span>
-
                         <span class="btn btn-warning"></span>
-
                         <span class="btn btn-danger"></span>
                     </div>
                 </div><!-- #sidebar-shortcuts -->
 
-                <ul class="nav nav-list">
-                    <li class="active">
-                        <a href="index.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <ul id="leftMenu" class="nav nav-list">
+                    <li @*class="active"*@>
+                        <a href="@Url.Action("Index","Default")">
                             <i class="icon-dashboard"></i>
                             <span class="menu-text"> 控制台 </span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="typography.html">
+                        <a href="@Url.Action("View1","Default")">
                             <i class="icon-text-width"></i>
                             <span class="menu-text"> 文字排版 </span>
                         </a>
@@ -378,35 +459,35 @@
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="@Url.Action("View3","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     组件
                                 </a>
                             </li>
 
                             <li>
-                                <a href="buttons.html">
+                                <a href="@Url.Action("View4","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     按钮 &amp; 图表
                                 </a>
                             </li>
 
                             <li>
-                                <a href="treeview.html">
+                                <a href="@Url.Action("View5","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     树菜单
                                 </a>
                             </li>
 
                             <li>
-                                <a href="jquery-ui.html">
+                                <a href="@Url.Action("View6","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     jQuery UI
                                 </a>
                             </li>
 
                             <li>
-                                <a href="nestable-list.html">
+                                <a href="@Url.Action("View7","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     可拖拽列表
                                 </a>
@@ -422,7 +503,7 @@
 
                                 <ul class="submenu">
                                     <li>
-                                        <a href="#">
+                                        <a href="@Url.Action("View2","Default")">
                                             <i class="icon-leaf"></i>
                                             第一级
                                         </a>
@@ -438,14 +519,14 @@
 
                                         <ul class="submenu">
                                             <li>
-                                                <a href="#">
+                                                <a href="@Url.Action("View8","Default")">
                                                     <i class="icon-plus"></i>
                                                     添加产品
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a href="#">
+                                                <a href="@Url.Action("View9","Default")">
                                                     <i class="icon-eye-open"></i>
                                                     查看商品
                                                 </a>
@@ -467,14 +548,14 @@
 
                         <ul class="submenu">
                             <li>
-                                <a href="tables.html">
+                                <a href="@Url.Action("View10","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     简单 &amp; 动态
                                 </a>
                             </li>
 
                             <li>
-                                <a href="jqgrid.html">
+                                <a href="@Url.Action("View11","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     jqGrid plugin
                                 </a>
@@ -492,28 +573,28 @@
 
                         <ul class="submenu">
                             <li>
-                                <a href="form-elements.html">
+                                <a href="@Url.Action("View12","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     表单组件
                                 </a>
                             </li>
 
                             <li>
-                                <a href="form-wizard.html">
+                                <a href="@Url.Action("View13","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     向导提示 &amp; 验证
                                 </a>
                             </li>
 
                             <li>
-                                <a href="wysiwyg.html">
+                                <a href="@Url.Action("View14","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     编辑器
                                 </a>
                             </li>
 
                             <li>
-                                <a href="dropzone.html">
+                                <a href="@Url.Action("View15","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     文件上传
                                 </a>
@@ -522,14 +603,14 @@
                     </li>
 
                     <li>
-                        <a href="widgets.html">
+                        <a href="@Url.Action("View16","Default")">
                             <i class="icon-list-alt"></i>
                             <span class="menu-text"> 插件 </span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="calendar.html">
+                        <a href="@Url.Action("View17","Default")">
                             <i class="icon-calendar"></i>
 
                             <span class="menu-text">
@@ -542,7 +623,7 @@
                     </li>
 
                     <li>
-                        <a href="gallery.html">
+                        <a href="@Url.Action("View18","Default")">
                             <i class="icon-picture"></i>
                             <span class="menu-text"> 相册 </span>
                         </a>
@@ -558,42 +639,42 @@
 
                         <ul class="submenu">
                             <li>
-                                <a href="profile.html">
+                                <a href="@Url.Action("View19","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     用户信息
                                 </a>
                             </li>
 
                             <li>
-                                <a href="inbox.html">
+                                <a href="@Url.Action("View20","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     收件箱
                                 </a>
                             </li>
 
                             <li>
-                                <a href="pricing.html">
+                                <a href="@Url.Action("View21","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     售价单
                                 </a>
                             </li>
 
                             <li>
-                                <a href="invoice.html">
+                                <a href="@Url.Action("View22","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     购物车
                                 </a>
                             </li>
 
                             <li>
-                                <a href="timeline.html">
+                                <a href="@Url.Action("View23","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     时间轴
                                 </a>
                             </li>
 
                             <li>
-                                <a href="login.html">
+                                <a href="@Url.Action("View24","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     登录 &amp; 注册
                                 </a>
@@ -615,35 +696,35 @@
 
                         <ul class="submenu">
                             <li>
-                                <a href="faq.html">
+                                <a href="@Url.Action("View25","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     帮助
                                 </a>
                             </li>
 
                             <li>
-                                <a href="error-404.html">
+                                <a href="@Url.Action("View26","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     404错误页面
                                 </a>
                             </li>
 
                             <li>
-                                <a href="error-500.html">
+                                <a href="@Url.Action("View27","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     500错误页面
                                 </a>
                             </li>
 
                             <li>
-                                <a href="grid.html">
+                                <a href="@Url.Action("View28","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     网格
                                 </a>
                             </li>
 
                             <li>
-                                <a href="blank.html">
+                                <a href="@Url.Action("View29","Default")">
                                     <i class="icon-double-angle-right"></i>
                                     空白页面
                                 </a>
@@ -651,6 +732,79 @@
                         </ul>
                     </li>
                 </ul><!-- /.nav-list -->
+
+
+
+                @*    菜单自动选择    *@
+                <script>
+                    $(document).ready(function () {
+                        @*
+                        // 任何需要执行的js特效
+                        //$("table tr:nth-child(even)").addClass("even");
+                        *@
+                        $("#leftMenu a").each(function () {
+                            try {
+                                if (window.location.href == this.href) {
+                                    $(this).parent().addClass("active");
+
+                                    @* 进行父级展开 (二级菜单自动展开) *@
+                                    var submenu2 = $(this).parent().select(".submenu");
+                                    if (submenu2) {
+                                        submenu2.parent().parent().addClass("open");
+                                        submenu2.parent().parent().addClass("active");
+                                        submenu2.parent().attr("style", "display:block;");
+                                    }
+                                    var submenu3 = submenu2.parent().parent().select(".submenu");
+                                    if (submenu3) {
+                                        submenu3.parent().parent().addClass("open");
+                                        submenu3.parent().parent().addClass("active");
+                                        submenu3.parent().attr("style", "display:block;");
+                                    }
+                                    var submenu4 = submenu3.parent().parent().select(".submenu");
+                                    if (submenu4) {
+                                        submenu4.parent().parent().addClass("open");
+                                        submenu4.parent().parent().addClass("active");
+                                        submenu4.parent().attr("style", "display:block;");
+                                    }
+                                }
+                                else {
+                                    $(this).parent().removeClass("active");
+                                }
+                            } catch (e)
+                            { }
+                        });
+                    });
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <div class="sidebar-collapse" id="sidebar-collapse">
                     <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
@@ -663,7 +817,78 @@
             
             <!-- START.main-content -->
             <div class="main-content">
-                @RenderBody()
+                <!-- START.breadcrumbs -->
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                    </script>
+                    <ul class="breadcrumb" id="breadcrumb-content-top">
+                        @*
+                        <li><i class="icon-home home-icon"></i><a href="#">首页</a></li>
+                        <li><a href="#">位置</a></li>
+                        <li class="active">控制台</li>
+                        *@
+                        <li class="orange"><i class="icon-spinner icon-spin orange bigger-125"></i> Loading ...</li>
+                    </ul><!-- .breadcrumb -->
+
+                    <div class="nav-search orange" id="nav-search">
+                        <i class="icon-spinner icon-spin orange bigger-125"></i> Loading ...
+                        <div id="nav-search-content" style="display:none;">
+                            <form class="form-search">
+                                <span class="input-icon">
+                                    <input type="text" placeholder="搜索 ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                    <i class="icon-search nav-search-icon"></i>
+                                </span>
+                            </form>
+                        </div>
+                    </div><!-- #nav-search -->
+                    <script>
+                        setTimeout('$("#nav-search").html($("#nav-search-content").html());', 500);
+                    </script>
+                </div><!-- END.breadcrumbs -->
+                
+
+                <!-- START.page-content -->
+                <div class="page-content">
+                    <div class="row">
+                        @RenderBody()
+                    </div><!-- /.row -->
+                </div><!-- END.page-content -->
+                
+
+
+                @*<script>
+                    var path = {
+                        "list": [
+                            {
+                                "name": "首页",
+                                "url": "#"
+                            },
+                            {
+                                "name": "UI Elements",
+                                "url": "#"
+                            }
+                        ],
+                        "last": "控制台"
+                    };
+                </script>
+                *@
+                @* 设置内容顶部导航内容 *@
+                <script>
+                    var result_breadcrumb_content_top = "";
+                    result_breadcrumb_content_top = "<li><i class=\"icon-home home-icon\"></i><a href=\"@Url.Action("Index","Default")\">首页</a></li>";
+
+                    for (i = 0; i < path.list.length;i++)
+                    {
+                        var temp858544 = path.list[i];
+                        result_breadcrumb_content_top += "<li><a href=\""+temp858544.url+"\">"+temp858544.name+"</a></li>";
+                    }
+
+                    result_breadcrumb_content_top += "<li class=\"active\">"+path.last+"</li>";
+                    //$("#breadcrumb-content-top").html(result_breadcrumb_content_top);
+                    setTimeout('$("#breadcrumb-content-top").html(result_breadcrumb_content_top);', 600);
+                </script>
+                
                 <div style="display:none">
                 @*
                 <!-- START.breadcrumbs -->
@@ -1837,7 +2062,37 @@
             </div>
             <!-- END.main-content -->
 
-            <div class="ace-settings-container" id="ace-settings-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="ace-settings-container" id="ace-settings-container" style="display:none;">
                 <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
                     <i class="icon-cog bigger-150"></i>
                 </div>
@@ -1852,7 +2107,7 @@
                                 <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
                             </select>
                         </div>
-                        <span>&nbsp; 选择皮肤</span>
+                        <span>&nbsp; 选择主题皮肤</span>
                     </div>
 
                     <div>
@@ -1867,54 +2122,57 @@
 
                     <div>
                         <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                        <label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
+                        <label class="lbl" for="ace-settings-breadcrumbs"> 固定面包屑</label>
                     </div>
-
+                    
+                    @*
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact">
+                        <label class="lbl" for="ace-settings-compact"> 紧凑的侧边栏</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight">
+                        <label class="lbl" for="ace-settings-highlight"> Alt.活动项目</label>
+                    </div>
                     <div>
                         <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
                         <label class="lbl" for="ace-settings-rtl">切换到左边</label>
                     </div>
+                    *@
 
                     <div>
                         <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                        <label class="lbl" for="ace-settings-add-container">
-                            切换窄屏
-                            <b></b>
-                        </label>
+                        <label class="lbl" for="ace-settings-add-container">切换（窄屏<b>/</b>全屏）</label>
                     </div>
                 </div>
             </div><!-- /#ace-settings-container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div><!-- /.main-container-inner -->
 
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
             <i class="icon-double-angle-up icon-only bigger-110"></i>
         </a>
     </div><!-- /.main-container -->
+
+
+
+
     <!-- basic scripts -->
-    <!--[if !IE]> -->
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-    <!-- <![endif]-->
-    <!--[if IE]>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <![endif]-->
-    <!--[if !IE]> -->
-
-    <script type="text/javascript">
-			window.jQuery || document.write("<script src='/Resource.Manage/ace/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
-    </script>
-
-    <!-- <![endif]-->
-    <!--[if IE]>
-    <script type="text/javascript">
-     window.jQuery || document.write("<script src='/Resource.Manage/ace/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
-    </script>
-    <![endif]-->
-
-    <script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='/Resource.Manage/ace/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
-    </script>
     <script src="/Resource.Manage/ace/assets/js/bootstrap.min.js"></script>
     <script src="/Resource.Manage/ace/assets/js/typeahead-bs2.min.js"></script>
 
@@ -1937,203 +2195,7 @@
     <script src="/Resource.Manage/ace/assets/js/ace-elements.min.js"></script>
     <script src="/Resource.Manage/ace/assets/js/ace.min.js"></script>
 
-    <!-- inline scripts related to this page -->
 
-    <script type="text/javascript">
-			jQuery(function($) {
-				$('.easy-pie-chart.percentage').each(function(){
-					var $box = $(this).closest('.infobox');
-					var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
-					var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
-					var size = parseInt($(this).data('size')) || 50;
-					$(this).easyPieChart({
-						barColor: barColor,
-						trackColor: trackColor,
-						scaleColor: false,
-						lineCap: 'butt',
-						lineWidth: parseInt(size/10),
-						animate: /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase()) ? false : 1000,
-						size: size
-					});
-				})
-
-				$('.sparkline').each(function(){
-					var $box = $(this).closest('.infobox');
-					var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
-					$(this).sparkline('html', {tagValuesAttribute:'data-values', type: 'bar', barColor: barColor , chartRangeMin:$(this).data('min') || 0} );
-				});
-
-
-
-
-			  var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
-			  var data = [
-				{ label: "social networks",  data: 38.7, color: "#68BC31"},
-				{ label: "search engines",  data: 24.5, color: "#2091CF"},
-				{ label: "ad campaigns",  data: 8.2, color: "#AF4E96"},
-				{ label: "direct traffic",  data: 18.6, color: "#DA5430"},
-				{ label: "other",  data: 10, color: "#FEE074"}
-			  ]
-			  function drawPieChart(placeholder, data, position) {
-			 	  $.plot(placeholder, data, {
-					series: {
-						pie: {
-							show: true,
-							tilt:0.8,
-							highlight: {
-								opacity: 0.25
-							},
-							stroke: {
-								color: '#fff',
-								width: 2
-							},
-							startAngle: 2
-						}
-					},
-					legend: {
-						show: true,
-						position: position || "ne",
-						labelBoxBorderColor: null,
-						margin:[-30,15]
-					}
-					,
-					grid: {
-						hoverable: true,
-						clickable: true
-					}
-				 })
-			 }
-			 drawPieChart(placeholder, data);
-
-			 /**
-			 we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-			 so that's not needed actually.
-			 */
-			 placeholder.data('chart', data);
-			 placeholder.data('draw', drawPieChart);
-
-
-
-			  var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
-			  var previousPoint = null;
-
-			  placeholder.on('plothover', function (event, pos, item) {
-				if(item) {
-					if (previousPoint != item.seriesIndex) {
-						previousPoint = item.seriesIndex;
-						var tip = item.series['label'] + " : " + item.series['percent']+'%';
-						$tooltip.show().children(0).text(tip);
-					}
-					$tooltip.css({top:pos.pageY + 10, left:pos.pageX + 10});
-				} else {
-					$tooltip.hide();
-					previousPoint = null;
-				}
-
-			 });
-
-
-
-
-
-
-				var d1 = [];
-				for (var i = 0; i < Math.PI * 2; i += 0.5) {
-					d1.push([i, Math.sin(i)]);
-				}
-
-				var d2 = [];
-				for (var i = 0; i < Math.PI * 2; i += 0.5) {
-					d2.push([i, Math.cos(i)]);
-				}
-
-				var d3 = [];
-				for (var i = 0; i < Math.PI * 2; i += 0.2) {
-					d3.push([i, Math.tan(i)]);
-				}
-
-
-				var sales_charts = $('#sales-charts').css({'width':'100%' , 'height':'220px'});
-				$.plot("#sales-charts", [
-					{ label: "Domains", data: d1 },
-					{ label: "Hosting", data: d2 },
-					{ label: "Services", data: d3 }
-				], {
-					hoverable: true,
-					shadowSize: 0,
-					series: {
-						lines: { show: true },
-						points: { show: true }
-					},
-					xaxis: {
-						tickLength: 0
-					},
-					yaxis: {
-						ticks: 10,
-						min: -2,
-						max: 2,
-						tickDecimals: 3
-					},
-					grid: {
-						backgroundColor: { colors: [ "#fff", "#fff" ] },
-						borderWidth: 1,
-						borderColor:'#555'
-					}
-				});
-
-
-				$('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-				function tooltip_placement(context, source) {
-					var $source = $(source);
-					var $parent = $source.closest('.tab-content')
-					var off1 = $parent.offset();
-					var w1 = $parent.width();
-
-					var off2 = $source.offset();
-					var w2 = $source.width();
-
-					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-					return 'left';
-				}
-
-
-				$('.dialogs,.comments').slimScroll({
-					height: '300px'
-			    });
-
-
-				//Android's default browser somehow is confused when tapping on label which will lead to dragging the task
-				//so disable dragging when clicking on label
-				var agent = navigator.userAgent.toLowerCase();
-				if("ontouchstart" in document && /applewebkit/.test(agent) && /android/.test(agent))
-				  $('#tasks').on('touchstart', function(e){
-					var li = $(e.target).closest('#tasks li');
-					if(li.length == 0)return;
-					var label = li.find('label.inline').get(0);
-					if(label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation() ;
-				});
-
-				$('#tasks').sortable({
-					opacity:0.8,
-					revert:true,
-					forceHelperSize:true,
-					placeholder: 'draggable-placeholder',
-					forcePlaceholderSize:true,
-					tolerance:'pointer',
-					stop: function( event, ui ) {//just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-						$(ui.item).css('z-index', 'auto');
-					}
-					}
-				);
-				$('#tasks').disableSelection();
-				$('#tasks input:checkbox').removeAttr('checked').on('click', function(){
-					if(this.checked) $(this).closest('li').addClass('selected');
-					else $(this).closest('li').removeClass('selected');
-				});
-
-
-			})
-    </script>
     <div style="display:none">
         @DateTime.Now.Year
         @Html.ActionLink("控制台", "控制台", "首页", new { area = "" }, new { @class = "navbar-brand" })

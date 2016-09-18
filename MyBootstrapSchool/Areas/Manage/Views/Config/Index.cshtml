@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    var path = {
+        "list": [
+            @*{
+                "name": "首页1",
+                "url": "@Url.Action("Index","Default")"
+            },
+            {
+                "name": "UI 元素",
+                "url": "/UI"
+            }*@
+        ],
+        "last": "配置"
+    };
+</script>
+
+
+
+<div class="col-md-12 col-lg-12">
+    <div class="tabbable">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active">
+                <a data-toggle="tab" href="#skin_set">
+                    <i class="green icon-home bigger-110"></i>
+                    基本设置
+                </a>
+            </li>
+
+            <li>
+                <a data-toggle="tab" href="#profile">
+                    Messages
+                    <span class="badge badge-danger">4</span>
+                </a>
+            </li>
+
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    Dropdown &nbsp;
+                    <i class="icon-caret-down bigger-110 width-auto"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-info">
+                    <li>
+                        <a data-toggle="tab" href="#dropdown1">@@fat</a>
+                    </li>
+
+                    <li>
+                        <a data-toggle="tab" href="#dropdown2">@@mdo</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="skin_set" class="tab-pane active">
+                <div>
+                    <h3 class="header smaller lighter green">主题设置</h3>
+                    <p>
+                        <button id="skin-0" class="btn btn-lg btn-success" onclick="submitSkin('skin-0',this);">&nbsp;&nbsp;主题一</button>
+                        <button id="skin-1" class="btn btn-lg btn-pink" onclick="submitSkin('skin-1',this);">&nbsp;&nbsp;主题二</button>
+                        <button id="skin-2" class="btn btn-lg btn-warning" onclick="submitSkin('skin-2',this);">&nbsp;&nbsp;主题三</button>
+                        <button id="skin-3" class="btn btn-lg btn-info" onclick="submitSkin('skin-3',this);">&nbsp;&nbsp;主题四</button>
+                    </p>
+                    <script>
+                        function submitSkin(skinid, obj) {
+                            $.post("@Url.Action("Index","Config")", { skinname: skinid }, function (result) {
+                                if (result.data == "ok") {
+                                    $(obj).addClass("icon-ok");
+
+                                    window.location = window.location.href;
+                                }
+                            });
+                        }
+
+                        //alert($("#skin-name").attr("class"));
+                        $("#" + $("#skin-name").attr("class")).addClass("icon-ok");
+                    </script>
+                </div>
+
+                <div>
+                    <h3 class="header smaller lighter purple">停靠设置</h3>
+                        <div class="ace-settings-box" id="ace-settings-box" style="display:block;float: inherit;">
+                            <div>
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                                <label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                                <label class="lbl" for="ace-settings-sidebar"> 固定滑动条</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                                <label class="lbl" for="ace-settings-breadcrumbs"> 固定面包屑</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                                <label class="lbl" for="ace-settings-add-container">切换（窄屏<b>/</b>全屏）</label>
+                            </div>
+                        </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div id="profile" class="tab-pane">
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+            </div>
+
+            <div id="dropdown1" class="tab-pane">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+            </div>
+
+            <div id="dropdown2" class="tab-pane">
+                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin.</p>
+            </div>
+        </div>
+    </div>
+</div>
