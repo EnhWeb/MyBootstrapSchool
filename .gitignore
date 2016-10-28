@@ -78,7 +78,7 @@ ipch/
 *.ncb
 *.opendb
 *.opensdf
-*.sdf
+#*.sdf
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
@@ -135,7 +135,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish/
+#publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
