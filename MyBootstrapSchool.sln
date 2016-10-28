@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBootstrapSchool", "MyBootstrapSchool\MyBootstrapSchool.csproj", "{6D1C9A5F-D4EB-4EE8-A78D-B669D9D34E40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBootstrapSchool", "MyBootstrapSchool\MyBootstrapSchool\MyBootstrapSchool.csproj", "{6D1C9A5F-D4EB-4EE8-A78D-B669D9D34E40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{FF361741-040E-4B83-9051-F3103FA9DB35}"
 	ProjectSection(SolutionItems) = preProject
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		LICENSE = LICENSE
-		readme.md = readme.md
+		MyBootstrapSchool\.gitattributes = MyBootstrapSchool\.gitattributes
+		MyBootstrapSchool\.gitignore = MyBootstrapSchool\.gitignore
+		MyBootstrapSchool\LICENSE = MyBootstrapSchool\LICENSE
+		MyBootstrapSchool\readme.md = MyBootstrapSchool\readme.md
 	EndProjectSection
 EndProject
 Global
