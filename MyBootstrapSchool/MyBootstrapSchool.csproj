@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyBootstrapSchool</RootNamespace>
     <AssemblyName>MyBootstrapSchool</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -62,9 +62,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -596,7 +596,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="MyTest.pfx" />
     <Content Include="Areas\Manage\Views\web.config" />
     <Content Include="Areas\Manage\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Manage\Views\Shared\_Layout.cshtml" />
@@ -639,6 +638,7 @@
     <Content Include="Areas\Manage\Views\Default\View27.cshtml" />
     <Content Include="Areas\Manage\Views\Default\View28.cshtml" />
     <Content Include="Areas\Manage\Views\Config\Index.cshtml" />
+    <Content Include="My_Test.snk" />
     <None Include="Properties\PublishProfiles\发布到文件.pubxml" />
     <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\ace.rar" />
     <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\Bootstrap ACE后台管理界面模板%28扁平化%29-后台模板-代码家园.URL" />
@@ -906,7 +906,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>MyTest.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>My_Test.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
