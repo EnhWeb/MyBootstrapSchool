@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+<script>
+    var path = {
+        "list": [
+            @*{
+                "name": "首页1",
+                "url": "@Url.Action("Index","Default")"
+            },
+            {
+                "name": "UI 元素",
+                "url": "/UI"
+            }*@
+        ],
+        "last": "文字排板"
+    };
+</script>
+
+
+<h2>View</h2>
+
+<script>
+    $(document).ready(function () {
+        // 任何需要执行的js特效 
+        //$("table tr:nth-child(even)").addClass("even");
+
+        //$("#li_Default_View1").addClass("active");
+    });
+</script>
