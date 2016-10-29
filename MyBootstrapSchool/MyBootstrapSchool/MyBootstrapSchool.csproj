@@ -639,6 +639,8 @@
     <Content Include="Areas\Manage\Views\Default\View28.cshtml" />
     <Content Include="Areas\Manage\Views\Config\Index.cshtml" />
     <Content Include="My_Test.snk" />
+    <None Include="Properties\PublishProfiles\ade - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ade - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\发布到文件.pubxml" />
     <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\ace.rar" />
     <Content Include="Resource\Bootstrap ACE后台管理界面模板%28扁平化%29\Bootstrap ACE后台管理界面模板%28扁平化%29-后台模板-代码家园.URL" />
