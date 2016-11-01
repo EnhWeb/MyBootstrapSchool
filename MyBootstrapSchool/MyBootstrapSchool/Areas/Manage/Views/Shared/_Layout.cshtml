@@ -101,7 +101,8 @@
     <script type="text/javascript">
         if ("ontouchend" in document) document.write("<script src='/Resource.Manage/ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
     </script>
-
+    
+    @Scripts.Render("~/bundles/ng")
     <script>
         //定义一个模块
         var app = angular.module('app1', []);
@@ -2212,19 +2213,18 @@
 
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=59206223" charset="UTF-8"></script>
 
-    @Scripts.Render("~/bundles/ng")
-    @RenderSection("scripts", required: false)
 </body>
 </html>
 
+@*
+    <!--
 
-<!--
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/ng")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
-@Scripts.Render("~/bundles/ng")
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
-
--->
+    -->
+*@
