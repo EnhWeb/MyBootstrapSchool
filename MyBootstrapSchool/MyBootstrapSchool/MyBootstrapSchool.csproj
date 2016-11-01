@@ -642,6 +642,7 @@
     <Content Include="My_Test.snk" />
     <Content Include="Areas\Manage\Views\Default\View30.cshtml" />
     <Content Include="Areas\Manage\Views\Default\View31.cshtml" />
+    <Content Include="Areas\Manage\Views\Default\View32.cshtml" />
     <None Include="Properties\PublishProfiles\ade - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ade - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\发布到文件.pubxml" />
