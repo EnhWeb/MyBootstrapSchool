@@ -10,6 +10,10 @@ namespace MyBootstrapSchool
         {
             BundleTable.EnableOptimizations = true;//是否开启合并压缩
 
+
+            bundles.Add(new ScriptBundle("~/bundles/ng").Include(
+                    "~/Scripts/angular.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
