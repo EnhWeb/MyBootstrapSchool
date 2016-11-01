@@ -672,6 +672,9 @@
     <Content Include="Areas\Manage\Views\Default\View28.cshtml" />
     <Content Include="Areas\Manage\Views\Config\Index.cshtml" />
     <Content Include="My_Test.snk" />
+    <Content Include="Areas\Manage\Views\Default\View30.cshtml" />
+    <Content Include="Areas\Manage\Views\Default\View31.cshtml" />
+    <Content Include="Areas\Manage\Views\Default\View32.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
