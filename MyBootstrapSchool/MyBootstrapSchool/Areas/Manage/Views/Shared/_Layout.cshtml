@@ -25,7 +25,7 @@
 }
 
 <!DOCTYPE html>
-<html lang="zh-cn" ng-app="">
+<html lang="zh-cn" ng-app="app1">
 <head>
     <script type="text/javascript">
         var _speedMark = new Date();
@@ -100,6 +100,11 @@
 
     <script type="text/javascript">
         if ("ontouchend" in document) document.write("<script src='/Resource.Manage/ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+    </script>
+
+    <script>
+        //定义一个模块
+        var app = angular.module('app1', []);
     </script>
 </head>
 
