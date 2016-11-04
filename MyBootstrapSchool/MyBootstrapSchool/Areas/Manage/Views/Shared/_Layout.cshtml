@@ -102,10 +102,25 @@
         if ("ontouchend" in document) document.write("<script src='/Resource.Manage/ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
     </script>
     
-    @Scripts.Render("~/bundles/ng")
+
+    <script src="~/Scripts/angular.min.js"></script>
     <script>
         //定义一个模块
         var app = angular.module('app1', []);
+    </script>
+
+    <script>
+        //防止当前页面重复点击，以减轻服务器压力
+        $(document).ready(function () {
+            var current_url = location.pathname;
+            $("a").each(function () {
+                if (current_url == $(this).attr("href")) {
+                    $(this).click(function () { return false; });
+                    $(this).dblclick(function () { return false; });
+                }
+            });
+            //alert(current_url)
+        });
     </script>
 </head>
 
@@ -2212,6 +2227,9 @@
     </div>
 
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=59206223" charset="UTF-8"></script>
+    
+    
+
 
 </body>
 </html>
